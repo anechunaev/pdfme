@@ -1,0 +1,32 @@
+{
+	"name": "pdfme",
+	"private": true,
+	"version": "0.0.1",
+	"description": "Stencil App Starter",
+	"scripts": {
+		"build": "stencil build",
+		"start": "stencil build --dev --watch --serve",
+		"test": "echo 'No tests'",
+		"test-old": "stencil test --spec --e2e",
+		"test.watch": "stencil test --spec --e2e --watchAll",
+		"generate": "stencil generate",
+		"prepare": "husky install",
+		"format": "prettier --write .",
+		"lint": "git diff-index --name-only --diff-filter=d HEAD | grep -E \"(.*)\\.(jsx|js|ts|tsx)$\" | xargs ./node_modules/.bin/eslint"
+	},
+	"devDependencies": {
+		"@stencil/core": "^2.0.0",
+		"@stencil/router": "^1.0.1",
+		"@typescript-eslint/eslint-plugin": "^4.22.1",
+		"@typescript-eslint/parser": "^4.22.1",
+		"eslint": "^7.25.0",
+		"eslint-config-prettier": "^8.3.0",
+		"husky": "^6.0.0",
+		"lint-staged": "^10.5.4",
+		"prettier": "2.2.1"
+	},
+	"license": "MIT",
+	"lint-staged": {
+		"**/*": "prettier --write --ignore-unknown"
+	}
+}
