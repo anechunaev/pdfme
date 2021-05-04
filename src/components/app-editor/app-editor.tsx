@@ -7,7 +7,6 @@ import { RouterHistory } from "@stencil/router";
 	shadow: true,
 })
 export class AppEditor {
-	@Prop() fileSource: Uint8Array;
 	@Prop() history: RouterHistory;
 
 	render() {
