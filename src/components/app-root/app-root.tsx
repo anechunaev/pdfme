@@ -10,7 +10,7 @@ export class AppRoot {
 		return (
 			<div>
 				<header>
-					<h1>Stencil App Starter</h1>
+					<h1>PDFme</h1>
 				</header>
 
 				<main>
@@ -18,12 +18,12 @@ export class AppRoot {
 						<stencil-route-switch scrollTopOffset={0}>
 							<stencil-route
 								url="/"
-								component="app-home"
+								component="app-welcome"
 								exact={true}
 							/>
 							<stencil-route
-								url="/profile/:name"
-								component="app-profile"
+								url="/editor"
+								component="app-editor"
 							/>
 						</stencil-route-switch>
 					</stencil-router>

@@ -5,28 +5,18 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { MatchResults } from "@stencil/router";
 export namespace Components {
-	interface AppHome {}
-	interface AppProfile {
-		match: MatchResults;
-	}
+	interface AppEditor {}
 	interface AppRoot {}
+	interface AppWelcome {}
 }
 declare global {
-	interface HTMLAppHomeElement
-		extends Components.AppHome,
+	interface HTMLAppEditorElement
+		extends Components.AppEditor,
 			HTMLStencilElement {}
-	var HTMLAppHomeElement: {
-		prototype: HTMLAppHomeElement;
-		new (): HTMLAppHomeElement;
-	};
-	interface HTMLAppProfileElement
-		extends Components.AppProfile,
-			HTMLStencilElement {}
-	var HTMLAppProfileElement: {
-		prototype: HTMLAppProfileElement;
-		new (): HTMLAppProfileElement;
+	var HTMLAppEditorElement: {
+		prototype: HTMLAppEditorElement;
+		new (): HTMLAppEditorElement;
 	};
 	interface HTMLAppRootElement
 		extends Components.AppRoot,
@@ -35,34 +25,39 @@ declare global {
 		prototype: HTMLAppRootElement;
 		new (): HTMLAppRootElement;
 	};
+	interface HTMLAppWelcomeElement
+		extends Components.AppWelcome,
+			HTMLStencilElement {}
+	var HTMLAppWelcomeElement: {
+		prototype: HTMLAppWelcomeElement;
+		new (): HTMLAppWelcomeElement;
+	};
 	interface HTMLElementTagNameMap {
-		"app-home": HTMLAppHomeElement;
-		"app-profile": HTMLAppProfileElement;
+		"app-editor": HTMLAppEditorElement;
 		"app-root": HTMLAppRootElement;
+		"app-welcome": HTMLAppWelcomeElement;
 	}
 }
 declare namespace LocalJSX {
-	interface AppHome {}
-	interface AppProfile {
-		match?: MatchResults;
-	}
+	interface AppEditor {}
 	interface AppRoot {}
+	interface AppWelcome {}
 	interface IntrinsicElements {
-		"app-home": AppHome;
-		"app-profile": AppProfile;
+		"app-editor": AppEditor;
 		"app-root": AppRoot;
+		"app-welcome": AppWelcome;
 	}
 }
 export { LocalJSX as JSX };
 declare module "@stencil/core" {
 	export namespace JSX {
 		interface IntrinsicElements {
-			"app-home": LocalJSX.AppHome &
-				JSXBase.HTMLAttributes<HTMLAppHomeElement>;
-			"app-profile": LocalJSX.AppProfile &
-				JSXBase.HTMLAttributes<HTMLAppProfileElement>;
+			"app-editor": LocalJSX.AppEditor &
+				JSXBase.HTMLAttributes<HTMLAppEditorElement>;
 			"app-root": LocalJSX.AppRoot &
 				JSXBase.HTMLAttributes<HTMLAppRootElement>;
+			"app-welcome": LocalJSX.AppWelcome &
+				JSXBase.HTMLAttributes<HTMLAppWelcomeElement>;
 		}
 	}
 }
