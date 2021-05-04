@@ -1,0 +1,40 @@
+:host {
+	display: block;
+}
+
+.wrapper {
+	padding: 16px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	margin: 32px auto;
+	max-width: 600px;
+}
+
+.header {
+	font: 600 16pt/16pt sans-serif;
+	flex: 1 1 100%;
+	min-width: 100%;
+	text-align: center;
+	margin-bottom: 32px;
+}
+
+.file-loader {
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #ccc;
+	background: #fff;
+	border-radius: 5px;
+	padding: 16px;
+	flex: 0 0 200px;
+	font: 400 10pt/12pt sans-serif;
+	width: 200px;
+	box-sizing: border-box;
+}
+
+.file-loader:hover {
+	border-color: #86cbf3;
+}

@@ -1,4 +1,5 @@
-import { Component, Host, h } from "@stencil/core";
+import { Component, Host, h, Prop } from "@stencil/core";
+import { RouterHistory } from "@stencil/router";
 
 @Component({
 	tag: "app-welcome",
@@ -6,12 +7,20 @@ import { Component, Host, h } from "@stencil/core";
 	shadow: true,
 })
 export class AppWelcome {
+	@Prop() history: RouterHistory;
+
 	render() {
 		return (
 			<Host>
 				<stencil-route-link url="/editor">
-					<button>Profile page</button>
+					<button>Editor page</button>
 				</stencil-route-link>
+
+				<br />
+				<br />
+				<br />
+
+				<file-load-method history={this.history} />
 			</Host>
 		);
 	}

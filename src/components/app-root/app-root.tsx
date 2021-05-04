@@ -18,12 +18,17 @@ export class AppRoot {
 						<stencil-route-switch scrollTopOffset={0}>
 							<stencil-route
 								url="/"
-								component="app-welcome"
 								exact={true}
+								routeRender={({ history }) => (
+									<app-welcome history={history} />
+								)}
 							/>
 							<stencil-route
 								url="/editor"
-								component="app-editor"
+								exact={true}
+								routeRender={({ history }) => (
+									<app-editor history={history} />
+								)}
 							/>
 						</stencil-route-switch>
 					</stencil-router>
