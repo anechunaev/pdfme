@@ -1,5 +1,4 @@
-import { Component, Host, h, Prop } from "@stencil/core";
-import { RouterHistory } from "@stencil/router";
+import { Component, Host, h, Prop, FunctionalComponent } from "@stencil/core";
 
 @Component({
 	tag: "app-editor",
@@ -7,13 +6,10 @@ import { RouterHistory } from "@stencil/router";
 	shadow: true,
 })
 export class AppEditor {
-	@Prop() history: RouterHistory;
+	@Prop() source: Uint8Array;
 
-	render() {
-		console.log(
-			"File source:",
-			this.history.location.state.fileSource as Uint8Array,
-		);
+	render(): FunctionalComponent {
+		console.log("File source:", this.source);
 		return (
 			<Host>
 				<slot></slot>

@@ -8,15 +8,12 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { RouterHistory } from "@stencil/router";
 export namespace Components {
 	interface AppEditor {
-		fileSource: Uint8Array;
-		history: RouterHistory;
+		source: Uint8Array;
 	}
 	interface AppRoot {}
-	interface AppWelcome {
-		history: RouterHistory;
-	}
 	interface FileLoadMethod {
 		history: RouterHistory;
+		onFileInput: (e: Event) => void;
 	}
 }
 declare global {
@@ -34,13 +31,6 @@ declare global {
 		prototype: HTMLAppRootElement;
 		new (): HTMLAppRootElement;
 	};
-	interface HTMLAppWelcomeElement
-		extends Components.AppWelcome,
-			HTMLStencilElement {}
-	var HTMLAppWelcomeElement: {
-		prototype: HTMLAppWelcomeElement;
-		new (): HTMLAppWelcomeElement;
-	};
 	interface HTMLFileLoadMethodElement
 		extends Components.FileLoadMethod,
 			HTMLStencilElement {}
@@ -51,26 +41,21 @@ declare global {
 	interface HTMLElementTagNameMap {
 		"app-editor": HTMLAppEditorElement;
 		"app-root": HTMLAppRootElement;
-		"app-welcome": HTMLAppWelcomeElement;
 		"file-load-method": HTMLFileLoadMethodElement;
 	}
 }
 declare namespace LocalJSX {
 	interface AppEditor {
-		fileSource?: Uint8Array;
-		history?: RouterHistory;
+		source?: Uint8Array;
 	}
 	interface AppRoot {}
-	interface AppWelcome {
-		history?: RouterHistory;
-	}
 	interface FileLoadMethod {
 		history?: RouterHistory;
+		onFileInput?: (e: Event) => void;
 	}
 	interface IntrinsicElements {
 		"app-editor": AppEditor;
 		"app-root": AppRoot;
-		"app-welcome": AppWelcome;
 		"file-load-method": FileLoadMethod;
 	}
 }
@@ -82,8 +67,6 @@ declare module "@stencil/core" {
 				JSXBase.HTMLAttributes<HTMLAppEditorElement>;
 			"app-root": LocalJSX.AppRoot &
 				JSXBase.HTMLAttributes<HTMLAppRootElement>;
-			"app-welcome": LocalJSX.AppWelcome &
-				JSXBase.HTMLAttributes<HTMLAppWelcomeElement>;
 			"file-load-method": LocalJSX.FileLoadMethod &
 				JSXBase.HTMLAttributes<HTMLFileLoadMethodElement>;
 		}

@@ -1,4 +1,11 @@
-import { Component, Host, h, Prop } from "@stencil/core";
+import {
+	Component,
+	Host,
+	h,
+	Prop,
+	State,
+	FunctionalComponent,
+} from "@stencil/core";
 import { RouterHistory } from "@stencil/router";
 
 @Component({
@@ -9,20 +16,9 @@ import { RouterHistory } from "@stencil/router";
 export class FileLoadMethod {
 	@Prop() history: RouterHistory;
 
-	private onFileInput = (event: InputEvent) => {
-		const file = (event.target as any).files[0];
-		const fileReader = new FileReader();
-		fileReader.onload = () => {
-			const typedarray = new Uint8Array(fileReader.result as ArrayBuffer);
-			this.history.push("/editor", {
-				fileSource: typedarray,
-				foo: "bar",
-			});
-		};
-		fileReader.readAsArrayBuffer(file);
-	};
+	@Prop() onFileInput: (e: Event) => void;
 
-	render() {
+	render(): FunctionalComponent {
 		return (
 			<Host>
 				<input
@@ -32,6 +28,14 @@ export class FileLoadMethod {
 					name="local-file"
 					onChange={this.onFileInput}
 				/>
+
+				{/* {!this.isValid && (
+					<div class="alert">
+						{this.isFileWithWrongExtension && (<p>File type is not PDF.</p>)}
+						{this.isFileTooBig && (<p>File is too big. Limit is 100 Mb.</p>)}
+					</div>
+				)} */}
+
 				<div class="wrapper">
 					<span class="header">Load PDF file:</span>
 					<label htmlFor="local-file" class="file-loader">

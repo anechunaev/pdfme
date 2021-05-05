@@ -1,4 +1,4 @@
-import { Component, h } from "@stencil/core";
+import { Component, h, State } from "@stencil/core";
 
 @Component({
 	tag: "app-root",
@@ -6,6 +6,34 @@ import { Component, h } from "@stencil/core";
 	shadow: true,
 })
 export class AppRoot {
+	@State() isValid = true;
+	@State() fileSource: Uint8Array | null = null;
+	private isFileWithWrongExtension = false;
+	private isFileTooBig = false;
+
+	private onFileInput = (event: InputEvent) => {
+		const file = (event.target as any).files[0];
+
+		if (file.type !== "application/pdf") {
+			this.isFileWithWrongExtension = true;
+		}
+
+		if (file.size / 1024 / 1024 > 100) {
+			// file is bigger then 100 Mb
+			this.isFileTooBig = true;
+		}
+
+		if (this.isFileTooBig || this.isFileWithWrongExtension) {
+			return (this.isValid = false);
+		}
+
+		const fileReader = new FileReader();
+		fileReader.onload = () => {
+			this.fileSource = new Uint8Array(fileReader.result as ArrayBuffer);
+		};
+		fileReader.readAsArrayBuffer(file);
+	};
+
 	render() {
 		return (
 			<div>
@@ -14,24 +42,11 @@ export class AppRoot {
 				</header>
 
 				<main>
-					<stencil-router>
-						<stencil-route-switch scrollTopOffset={0}>
-							<stencil-route
-								url="/"
-								exact={true}
-								routeRender={({ history }) => (
-									<app-welcome history={history} />
-								)}
-							/>
-							<stencil-route
-								url="/editor"
-								exact={true}
-								routeRender={({ history }) => (
-									<app-editor history={history} />
-								)}
-							/>
-						</stencil-route-switch>
-					</stencil-router>
+					{this.fileSource ? (
+						<app-editor source={this.fileSource} />
+					) : (
+						<file-load-method onFileInput={this.onFileInput} />
+					)}
 				</main>
 			</div>
 		);
