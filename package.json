@@ -16,6 +16,7 @@
 	},
 	"devDependencies": {
 		"@stencil/core": "^2.0.0",
+		"@stencil/less": "^1.0.0",
 		"@stencil/router": "^1.0.1",
 		"@typescript-eslint/eslint-plugin": "^4.22.1",
 		"@typescript-eslint/parser": "^4.22.1",
@@ -23,10 +24,15 @@
 		"eslint-config-prettier": "^8.3.0",
 		"husky": "^6.0.0",
 		"lint-staged": "^10.5.4",
-		"prettier": "2.2.1"
+		"prettier": "2.2.1",
+		"typescript": "^4.2.4"
 	},
 	"license": "MIT",
 	"lint-staged": {
 		"**/*": "prettier --write --ignore-unknown"
+	},
+	"dependencies": {
+		"carbon-components": "^10.32.1",
+		"normalize.css": "^8.0.1"
 	}
 }

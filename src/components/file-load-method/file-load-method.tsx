@@ -1,11 +1,4 @@
-import {
-	Component,
-	Host,
-	h,
-	Prop,
-	State,
-	FunctionalComponent,
-} from "@stencil/core";
+import { Component, Host, h, Prop, FunctionalComponent } from "@stencil/core";
 import { RouterHistory } from "@stencil/router";
 
 @Component({
@@ -28,13 +21,6 @@ export class FileLoadMethod {
 					name="local-file"
 					onChange={this.onFileInput}
 				/>
-
-				{/* {!this.isValid && (
-					<div class="alert">
-						{this.isFileWithWrongExtension && (<p>File type is not PDF.</p>)}
-						{this.isFileTooBig && (<p>File is too big. Limit is 100 Mb.</p>)}
-					</div>
-				)} */}
 
 				<div class="wrapper">
 					<span class="header">Load PDF file:</span>
